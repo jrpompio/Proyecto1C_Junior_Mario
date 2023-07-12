@@ -65,8 +65,8 @@ void contarRepeticiones(const char* cadena) {
     }
 
     // Usamos otro bucle for para encontrar el índice del primer carácter que no sea igual al primer carácter de la cadena o cuyo dígito no sea igual al primer dígito de la cadena.
-    for (i = 2; i < longitud; i += 2) {
-        if (cadena[i] != cadena[0] || cadena[i + 1] != cadena[1]) {
+    for (k = 2; k < longitud; k += 2) {
+        if (cadena[k] != cadena[0] || cadena[k + 1] != cadena[1]) {
             break;
         }
     }
@@ -92,7 +92,7 @@ Insertando código a probar
 
 int main(int argc, char *argv[]) {
     if (argc != 2) {
-        printf("Solo es permitido ingresar 1 número entero.\n");
+        printf("Solo es permitido ingresar 1 n�mero entero.\n");
         return 1;
     }
 
