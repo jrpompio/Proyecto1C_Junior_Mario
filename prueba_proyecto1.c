@@ -3,54 +3,54 @@
 #include <string.h>
 
 typedef struct {
-    int numero;
-    int repeticiones;
-} ParNumeroRepeticiones;
+    int x;
+    int y;
+} lista_asociada;
 
 void contarRepeticiones(const char* cadena) {
-    int longitud = strlen(cadena);
+    int longitud_cadena = strlen(cadena);
 
-    char* cadenaMutable = malloc((longitud + 1) * sizeof(char)); // Crear una copia mutable de la cadena
-    strcpy(cadenaMutable, cadena); // Copiar la cadena original a la cadena mutable
+    char* cadena_dinamica = malloc((longitud_cadena + 1) * sizeof(char)); // Crear una copia mutable de la cadena
+    strcpy(cadena_dinamica, cadena); // Copiar la cadena original a la cadena mutable
 
-    char* token = strtok(cadenaMutable, "#"); // Separar la cadena por el carácter '#'
-    ParNumeroRepeticiones* pares = malloc(longitud * sizeof(ParNumeroRepeticiones));
-    int numPares = 0;
+    char* token = strtok(cadena_dinamica, "#"); // Separar la cadena por el carácter '#'
+    lista_asociada* repeticiones = malloc(longitud_cadena * sizeof(lista_asociada));
+    int elemento = 0;
 
     while (token != NULL) {
         int numero = atoi(token);
 
-        // Buscar el número en los pares existentes
+        // Buscar el número en las repeticiones existentes
         int i;
-        for (i = 0; i < numPares; i++) {
-            if (pares[i].numero == numero) {
-                pares[i].repeticiones++;
+        for (i = 0; i < elemento; i++) {
+            if (repeticiones[i].x == numero) {
+                repeticiones[i].y++;
                 break;
             }
         }
 
         // Si el número no se encontró, agregarlo como nuevo par
-        if (i == numPares) {
-            pares[numPares].numero = numero;
-            pares[numPares].repeticiones = 1;
-            numPares++;
+        if (i == elemento) {
+            repeticiones[elemento].x = numero;
+            repeticiones[elemento].y = 1;
+            elemento++;
         }
 
         token = strtok(NULL, "#"); // Obtener el siguiente token
     }
 
-    for (int i = 0; i < numPares; i++) {
-        printf("(%d, %d) ", pares[i].numero, pares[i].repeticiones);
+    for (int i = 0; i < elemento; i++) {
+        printf("(%d, %d) ", repeticiones[i].x, repeticiones[i].y);
     }
 
-    free(pares); // Liberar la memoria asignada para los pares
-    free(cadenaMutable); // Liberar la memoria asignada para la cadena mutable
+    free(repeticiones); // Liberar la memoria asignada para los repeticiones
+    free(cadena_dinamica); // Liberar la memoria asignada para la cadena mutable
 
     printf("\n");
 }
 
 int main() {
-    const char* cadena = "#2#2#3#3#3#3#3#5#5#5#5#11#11#121";
+    const char* cadena = "#1#1#1#1#1#2#2#121";
     contarRepeticiones(cadena);
 
     return 0;
