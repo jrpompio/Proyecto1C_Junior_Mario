@@ -1,43 +1,41 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
-int contar_primos(unsigned long long int numero) {
-    numero = abs(numero);
-    // Se declaran variables a usar
-    int j = 0; // Variable de contador de veces que el residuo es cero
-    unsigned long long int i; // Variable para iterar el for
+char* factorizarPrimos(long long int numero) {
+    int factor = 2;
+    int n = 1000;
+    char* factores = malloc(n * sizeof(char));
+    factores[0] = '\0';
 
-    for ( i = numero - 1; i >= 2; i--) {
-        // si el residuo es igual a cero
-        if (numero % i == 0) {
-        // se aumenta el contador
-            j++;
+    while (numero > 1) {
+        if (numero % factor == 0) {
+            char temp[100];
+            sprintf(temp, "*%d", factor);
+            strcat(factores, temp);
+            numero /= factor;
+        } else {
+            factor++;
         }
     }
-    return j; // la función retorna el valor del contador
+    return factores;
+    free(factores);
 }
-
-
-
-
-
-// Función principal
-
 
 
 int main(int argc, char *argv[]) {
-    /* Condición para terminar el programa los argumentos son diferentes a 2
-    puesto que solo se debe tener un numero entero y el argumento 0 */
-     if (argc != 2) {
-        printf("Debe ingresar 1 número entero nada más.\n");
-        return 1; // acá se devuelve 1 para terminar el programa
+    if (argc != 2) {
+        printf("Solo es permitido ingresar 1 número entero.\n");
+        return 1;
     }
-    // De igual manera solo se usa el argumento 1, ya que solo este es admitido
-    unsigned long long int numero =  atoi(argv[1]);
 
+    long long int numero = abs(atoll(argv[1]));
 
+    char* mensaje = factorizarPrimos(numero);
 
+    printf("\n%s\n\n", mensaje);
+
+    free(mensaje);
 
     return 0;
 }
-
