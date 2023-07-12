@@ -19,6 +19,8 @@ int contar_primos(unsigned long long int numero) {
 
 
 
+
+
 // Función principal
 
 

@@ -28,9 +28,9 @@ int main(int argc, char *argv[]) {
     }
 
     else {
-        a = atoi(argv[1]);
-        b = atoi(argv[2]);
-        c = atoi(argv[3]);
+        a = atof(argv[1]);
+        b = atof(argv[2]);
+        c = atof(argv[3]);
 
         if (a + b <= c) {
             printf("MathError: Los valores digitados no son validos.\n");
