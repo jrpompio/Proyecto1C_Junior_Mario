@@ -2,12 +2,12 @@
 #include <stdlib.h>
 
 int crearMatriz(int*** matriz, int*** listaPunteros, int filas, int columnas) {
-    *matriz = (int**)malloc(filas * sizeof(int*));
-    *listaPunteros = (int**)malloc(filas * sizeof(int*));
+    *matriz = (int**)malloc(filas * sizeof(int*)); // Reservar memoria para las filas de la matriz
+    *listaPunteros = (int**)malloc(filas * sizeof(int*)); // Reservar memoria para los punteros de la lista
 
     for (int i = 0; i < filas; i++) {
-        (*matriz)[i] = (int*)malloc(columnas * sizeof(int));
-        (*listaPunteros)[i] = (*matriz)[i];  // Guardar el puntero de la primera componente
+        (*matriz)[i] = (int*)malloc(columnas * sizeof(int)); // Reservar memoria para las columnas de la matriz
+        (*listaPunteros)[i] = (*matriz)[i]; // Asignar los punteros de la lista a las filas de la matriz
     }
 
     printf("Ingrese los elementos de la matriz:\n");
@@ -15,20 +15,21 @@ int crearMatriz(int*** matriz, int*** listaPunteros, int filas, int columnas) {
     for (int i = 1; i < filas + 1; i++) {
         for (int j = 1; j < columnas + 1; j++) {
             printf("Ingrese la componente (%d, %d): ", i, j);
-            if (scanf("%d", &((*matriz)[i-1][j-1])) != 1) {
-                return -1;  // Se ingresó algo distinto a un número entero
+                printf("---%d---", ((*matriz)[i-1][j-1]));
+            if (scanf("%d", &((*matriz)[i-1][j-1])) != 1) {// Leer el elemento y verificar si es un número entero
+                return -1; // Devolver -1 en caso de error
             }
         }
     }
 
-    return 0;  // Todo se ingresó correctamente
+    return 0; // Devolver 0 si la matriz se creó correctamente
 }
 
 void liberarMatriz(int** matriz, int filas) {
     for (int i = 0; i < filas; i++) {
-        free(matriz[i]);
+        free(matriz[i]); // Liberar la memoria de las columnas de la matriz
     }
-    free(matriz);
+    free(matriz); // Liberar la memoria de las filas de la matriz
 }
 
 void imprimirMatriz(int** matriz, int filas, int columnas) {
@@ -82,17 +83,9 @@ int main() {
     if (crearMatriz(&matriz, &listaPunteros, filas, columnas) == -1) {
         printf("ValueError: Solo puede ingresar números enteros.\n");
     } else {
-        // Realizar operaciones con la matriz...
-
-        // Imprimir la matriz
         imprimirMatriz(matriz, filas, columnas);
-
-        // Imprimir la lista de punteros
         imprimirListaPunteros(listaPunteros, filas);
-
         imprimirMatrizConPunteros(listaPunteros, filas, columnas);
-
-        // Liberar la memoria
         liberarMatriz(matriz, filas);
     }
 
