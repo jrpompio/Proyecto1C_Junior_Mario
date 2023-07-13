@@ -1,20 +1,23 @@
 /******************************************************************************
 
-Proyecto3.c - Realizado por:
-Junior Alfonso Ruiz Sánchez - B97026
-Mario Fabian Rocha Morales - B96561
+Proyecto3.c
 
-Programa que crea una matriz de cualquier tamaño y crea una lista de punteros 
-de las primeras componentes de las filas de cada matriz.
+Realizado por:
+    Junior Alfonso Ruiz Sánchez - B97026
+    Mario Fabian Rocha Morales - B96561
+
+Uso:
+    Programa que crea una matriz de cualquier tamaño y crea una lista de punteros
+    de las primeras componentes de las filas de cada matriz.
 
 ******************************************************************************/
 
 #include <stdio.h>
 #include <stdlib.h>
 
-/*Fución que crea la matriz y la lista de punteros usando memoria dinámica
+/* Función que crea la matriz y la lista de punteros usando memoria dinámica
 tanto para la matriz como para la lista de punteros de la primera componente
-de cada fila de la matriz*/
+de cada fila de la matriz */
 int crearMatriz(int*** matriz, int*** listaPunteros, int filas, int columnas) {
     *matriz = (int**)malloc(filas * sizeof(int*));
     *listaPunteros = (int**)malloc(filas * sizeof(int*));
