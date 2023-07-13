@@ -101,27 +101,35 @@ int main() {
     int** listaPunteros;
     int filas, columnas;
 
+    printf(
+        "Programa para generar una matris de M columnas\n"
+        "y N filas y optener el puntero de la primera\n"
+        "componente de cada fila (solo números enteros).\n"
+        "-------------------------------------------------\n"
+    );
+
     printf("Ingrese el número de filas: ");
     scanf("%d", &filas);
 
     printf("Ingrese el número de columnas: ");
     scanf("%d", &columnas);
 
+    // Condicional que imprime mensaje de error si se digitan mal
+    // las componentes de la matriz.
     if (crearMatriz(&matriz, &listaPunteros, filas, columnas) == -1) {
         printf("ValueError: Solo puede ingresar números enteros.\n");
     } else {
-        // Realizar operaciones con la matriz...
 
-        // Imprimir la matriz
+        // Imprime la matriz.
         imprimirMatriz(matriz, filas, columnas);
 
-        // Imprimir la lista de punteros
+        // Imprime la lista de punteros.
         imprimirListaPunteros(listaPunteros, filas);
 
-        
+        // Imprime la matriz usando aritmética de punteros.
         MatrizConPunteros(listaPunteros, filas, columnas);
 
-        // Liberar la memoria
+        // Libera la memoria
         liberarMemoria(matriz, filas, listaPunteros);
     }
 
