@@ -1,11 +1,14 @@
 /******************************************************************************
 
-Proyecto2.c - Realizado por:
-Junior Alfonso Ruiz Sánchez - B97026
-Mario Fabian Rocha Morales - B96561
+Proyecto2.c
 
-Programa para calcular el ángulo entre los lados de un triángulo usando ley
-de cosenos.
+Realizado por:
+    Junior Alfonso Ruiz Sánchez - B97026
+    Mario Fabian Rocha Morales - B96561
+
+Uso:
+    Programa para calcular el ángulo entre los lados de un triángulo usando ley
+    de cosenos.
 
 ******************************************************************************/
 

@@ -1,11 +1,18 @@
 /*******************************************************************************
 
-Proyecto1.c - Realizado por:
-Junior Alfonso Ruiz Sánchez - B97026
-Mario Fabian Rocha Morales - B96561
+Proyecto1.c
 
-Este programa...
+Realizado por:
+    Junior Alfonso Ruiz Sánchez - B97026
+    Mario Fabian Rocha Morales - B96561
 
+Uso:
+    Este programa descompone un número entero dando sus divisores primos, con sus
+    respectivas potencias. El formato para la descomposición es:
+
+        N: (d1, p1), (d2, p2), …, (dm, pm);
+
+    donde N es el número por descomponer, d es un divisor, y p es una potencia.
 *******************************************************************************/
 
 #include <stdio.h>
